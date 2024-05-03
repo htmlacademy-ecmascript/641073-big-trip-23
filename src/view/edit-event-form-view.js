@@ -131,12 +131,20 @@ function createEditEventFormTemplate() {
         </section>
       </section>
     </form>
+  `
+}
+
+function createEditEventFormListItemTemplate() {
+  return `
+    <li class="trip-events__item">
+      ${createEditEventFormTemplate()}
+    </li>
   `;
 }
 
 export default class EditEventFormView {
   getTemplate() {
-    return createEditEventFormTemplate();
+    return createEditEventFormListItemTemplate();
   }
 
   getElement() {
