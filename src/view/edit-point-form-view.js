@@ -2,7 +2,7 @@ import { createElement } from '../render.js';
 
 const EVENT_TYPES = ['taxi', 'bus', 'train', 'ship', 'drive', 'flight', 'check-in', 'sightseeing', 'restaurant'];
 
-function createEventTypeListItemTemplate(type) {
+function createEventTypeItemTemplate(type) {
   return `
     <div class="event__type-item">
       <input id="event-type-${type}-1" class="event__type-input  visually-hidden" type="radio" name="event-type" value="${type}">
@@ -11,21 +11,7 @@ function createEventTypeListItemTemplate(type) {
   `;
 }
 
-function createEventTypeListTemplate() {
-  return `
-  <div class="event__type-list">
-    <fieldset class="event__type-group">
-      <legend class="visually-hidden">Event type</legend>
-
-      ${EVENT_TYPES.map((type) => createEventTypeListItemTemplate(type)).join('')}
-
-    </fieldset>
-  </div>
-
-  `;
-}
-
-function createEditEventFormTemplate() {
+function createEditPointFormTemplate() {
   return `
     <form class="event event--edit" action="#" method="post">
       <header class="event__header">
@@ -36,7 +22,12 @@ function createEditEventFormTemplate() {
           </label>
           <input class="event__type-toggle  visually-hidden" id="event-type-toggle-1" type="checkbox">
 
-          ${createEventTypeListTemplate()}
+          <div class="event__type-list">
+            <fieldset class="event__type-group">
+              <legend class="visually-hidden">Event type</legend>
+              ${EVENT_TYPES.map((type) => createEventTypeItemTemplate(type)).join('')}
+            </fieldset>
+          </div>
         </div>
 
         <div class="event__field-group  event__field-group--destination">
@@ -134,17 +125,17 @@ function createEditEventFormTemplate() {
   `
 }
 
-function createEditEventFormListItemTemplate() {
+function createEditPointListItemTemplate() {
   return `
     <li class="trip-events__item">
-      ${createEditEventFormTemplate()}
+      ${createEditPointFormTemplate()}
     </li>
   `;
 }
 
-export default class EditEventFormView {
+export default class EditPointFormView {
   getTemplate() {
-    return createEditEventFormListItemTemplate();
+    return createEditPointListItemTemplate();
   }
 
   getElement() {
