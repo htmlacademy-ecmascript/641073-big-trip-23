@@ -15,15 +15,38 @@ export default class GeneralPresenter {
     this.tripEvents = document.querySelector('.trip-events');
   }
 
-  init() {
+  renderTripInfo() {
     render(new TripInfoView(), this.tripMain, 'afterbegin');
-    render(new FilterView(), this.tripFilters);
-    render(new SortView(), this.tripEvents);
-    render(this.eventListComponent, this.tripEvents);
-    render(new EditPointFormView, this.eventListComponent.getElement());
+  }
 
+  renderFilters() {
+    render(new FilterView(), this.tripFilters);
+  }
+
+  renderSorting() {
+    render(new SortView(), this.tripEvents);
+  }
+
+  _renderEditForm() {
+    render(new EditPointFormView, this.eventListComponent.getElement());
+  }
+
+  _renderWaypoints() {
     for(let i = 0; i < 3; i++) {
       render(new WaypointView(), this.eventListComponent.getElement());
     }
+  }
+
+  renderTripEvents() {
+    render(this.eventListComponent, this.tripEvents);
+    this._renderEditForm();
+    this._renderWaypoints();
+  }
+
+  init() {
+    this.renderTripInfo();
+    this.renderFilters();
+    this.renderSorting();
+    this.renderTripEvents();
   }
 }

@@ -1,3 +1,3 @@
-import TripEventsPresenter from './presenter/general-presenter.js';
+import GeneralPresenter from './presenter/general-presenter.js';
 
-new TripEventsPresenter().init();
+new GeneralPresenter().init();
