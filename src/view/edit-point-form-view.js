@@ -122,7 +122,7 @@ function createEditPointFormTemplate() {
         </section>
       </section>
     </form>
-  `
+  `;
 }
 
 function createEditPointListItemTemplate() {
