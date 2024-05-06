@@ -1,6 +1,3 @@
-import TripInfoView from './view/trip-info-view.js';
-import { render } from './render.js';
+import GeneralPresenter from './presenter/general-presenter.js';
 
-const siteMainElement = document.querySelector('.trip-main');
-
-render(new TripInfoView(), siteMainElement, 'afterbegin');
+new GeneralPresenter().init();
